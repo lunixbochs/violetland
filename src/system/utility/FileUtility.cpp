@@ -19,9 +19,8 @@ std::vector<std::string> FileUtility::getFilesFromDir(boost::filesystem::path di
 	boost::filesystem::directory_iterator dir_it(dir);
 
 	while (dir_it != boost::filesystem::directory_iterator()) {
-		if (boost::filesystem::is_regular_file(*dir_it)) {
-			files.push_back(dir_it->path().filename().string());
-		}
+		if (boost::filesystem::is_regular_file(*dir_it))
+			files.push_back(dir_it->filename());
 		++dir_it;
 	}
 	return files;
@@ -33,8 +32,8 @@ std::vector<std::string> FileUtility::getSubDirsFromDir(boost::filesystem::path 
 
 	while (dir_it != boost::filesystem::directory_iterator()) {
 		if (boost::filesystem::is_directory(*dir_it))
-			if (dir_it->path().filename().string()[0] != '.')
-				subDirs.push_back(dir_it->path().filename().string());
+			if (dir_it->path().filename()[0] != '.')
+				subDirs.push_back(dir_it->path().filename());
 		++dir_it;
 	}
 	return subDirs;
@@ -46,7 +45,7 @@ unsigned int FileUtility::getSubDirsCountFromDir(boost::filesystem::path dir) {
 
 	while (dir_it != boost::filesystem::directory_iterator()) {
 		if (boost::filesystem::is_directory(*dir_it))
-			if (dir_it->path().filename().string()[0] != '.')
+			if (dir_it->path().filename()[0] != '.')
 				++count;
 		++dir_it;
 	}

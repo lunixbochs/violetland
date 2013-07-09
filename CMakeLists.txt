@@ -2,25 +2,16 @@ PROJECT(violetland)
 
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6.0 FATAL_ERROR) 
 
-find_package(SDL REQUIRED)
-find_package(SDL_image REQUIRED)
-find_package(SDL_ttf REQUIRED)
-find_package(SDL_mixer REQUIRED)
-find_package(OpenGL REQUIRED)
-find_package(Gettext REQUIRED)
-find_package(Boost COMPONENTS filesystem system REQUIRED)
 add_definitions(-DBOOST_FILESYSTEM_VERSION=3)
 
 # Searching for libintl using bundled CMake script
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/lib/fcitx/cmake")
-include(FindLibintl)
 
 if(${MINGW})
 	set(LIBINTL_LIBRARIES intl)
 endif(${MINGW})
 
-set(incDirList  ${SDL_INCLUDE_DIR}  ${SDLIMAGE_INCLUDE_DIR} ${SDLTTF_INCLUDE_DIR} ${SDLMIXER_INCLUDE_DIR} ${OPENGL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS} ${LIBINTL_INCLUDE_DIR})
-set(libList ${SDL_LIBRARY} ${SDLIMAGE_LIBRARY} ${SDLTTF_LIBRARY} ${SDLMIXER_LIBRARY} ${OPENGL_LIBRARIES} ${Boost_LIBRARIES} ${LIBINTL_LIBRARIES})
+set(libList SDL SDL_image SDL_ttf SDL_mixer GL boost_filesystem-mt boost_system-mt)
 
 if (DEFINED LOCALE_INSTALL_DIR)
 	set(LOCALEDIR "${LOCALE_INSTALL_DIR}")

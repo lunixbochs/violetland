@@ -1,7 +1,7 @@
 #ifndef LASERBULLET_H_
 #define LASERBULLET_H_
 
-#include "SDL_opengl.h"
+#include <SDL/SDL_opengl.h>
 #include "Bullet.h"
 
 namespace violetland {

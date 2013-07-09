@@ -1,7 +1,7 @@
 #ifndef STANDARDBULLET_H_
 #define STANDARDBULLET_H_
 
-#include "SDL_opengl.h"
+#include <SDL/SDL_opengl.h>
 #include "Bullet.h"
 
 namespace violetland {

@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "SDL.h"
+#include <SDL/SDL.h>
 
 using namespace std;
 
